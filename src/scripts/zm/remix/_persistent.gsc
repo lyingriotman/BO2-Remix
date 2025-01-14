@@ -91,7 +91,7 @@ pers_nube_should_we_give_raygun_override( player_has_weapon, player, weapon_buy 
 	{
 		return player_has_weapon;
 	}
-	if ( isDefined( weapon_buy ) && getsubstr( weapon_buy, 0, 11 ) != "rottweil72_" )
+	if ( isDefined( weapon_buy ) && getsubstr( weapon_buy, 0, 11 ) != "rottweil72_zm" )
 	{
 		return player_has_weapon;
 	}
