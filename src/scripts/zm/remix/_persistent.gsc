@@ -6,41 +6,41 @@
 set_persistent_stats()
 {
 	//If you'd like to enable persistent_stats on every map, feel free to comment out this check.
-	if( !isVictisMap() )
-		return;
+//	if( !isVictisMap() )
+//		return;
 	
 	flag_wait("initial_blackscreen_passed");
 
 	//You can disable any persistent stats more directly from here, if you'd like to have perma_perks, but not bank points, etc.
 	set_perma_perks();
-	set_bank_points();
-	set_fridge_weapon();
+//	set_bank_points();
+//	set_fridge_weapon();
 }
 
 //To disable perma_perks, make sure to comment out both the array name, and the value. I've adjusted the formatting to make it easier.
 set_perma_perks() // Huthtv
 {
 	persistent_upgrades = array(
-	"pers_revivenoperk", 
-	"pers_multikill_headshots",
-	"pers_insta_kill",
-	"pers_jugg",
+//	"pers_revivenoperk", 
+//	"pers_multikill_headshots",
+//	"pers_insta_kill",
+//	"pers_jugg",
 	"pers_perk_lose_counter",
-	"pers_sniper_counter",
-	"pers_box_weapon_counter",
-	"pers_nube_counter"
+//	"pers_sniper_counter",
+//	"pers_box_weapon_counter",
+//	"pers_nube_counter"
 	);
 
 	persistent_upgrade_values = [];
-	persistent_upgrade_values["pers_revivenoperk"] = 17;
-	persistent_upgrade_values["pers_multikill_headshots"] = 5;
-	persistent_upgrade_values["pers_insta_kill"] = 2;
-	persistent_upgrade_values["pers_jugg"] = 3;
+//	persistent_upgrade_values["pers_revivenoperk"] = 17;
+//	persistent_upgrade_values["pers_multikill_headshots"] = 5;
+//	persistent_upgrade_values["pers_insta_kill"] = 2;
+//	persistent_upgrade_values["pers_jugg"] = 3;
 	persistent_upgrade_values["pers_perk_lose_counter"] = 3;
-	persistent_upgrade_values["pers_sniper_counter"] = 1;
-	persistent_upgrade_values["pers_box_weapon_counter"] = 5;
-	persistent_upgrade_values["pers_flopper_counter"] = 1;
-	persistent_upgrade_values["pers_nube_counter"] = 1;
+//	persistent_upgrade_values["pers_sniper_counter"] = 1;
+//	persistent_upgrade_values["pers_box_weapon_counter"] = 5;
+//	persistent_upgrade_values["pers_flopper_counter"] = 1;
+//	persistent_upgrade_values["pers_nube_counter"] = 1;
 	if(level.script == zm_buried)
 		persistent_upgrades = combinearrays(persistent_upgrades, array("pers_flopper_counter"));
 
