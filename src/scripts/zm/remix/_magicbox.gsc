@@ -246,10 +246,10 @@ treasure_chest_canplayerreceiveweapon_override( player, weapon, pap_triggers ) /
 //Used to see if you have a wonderweapon before moving the box. To disable this check, comment out the entire if statement, or change the "return 1" to "return 0".
 is_setup_weapon( weapon )
 {
-	if( weapon == "raygun_mark2_zm" || weapon == "ray_gun_zm" || weapon == "cymbal_monkey_zm" || weapon == "blundergat_zm" || weapon == "slowgun_zm" || weapon == "m32_zm" )
-	{
-		return 1;
-	}
+//	if( weapon == "raygun_mark2_zm" || weapon == "ray_gun_zm" || weapon == "cymbal_monkey_zm" || weapon == "blundergat_zm" || weapon == "slowgun_zm" || weapon == "m32_zm" )
+//	{
+//		return 1;
+//	}
 	return 0;
 }
 
@@ -337,49 +337,49 @@ treasure_chest_weapon_spawn_override( chest, player, respin ) //checked changed 
 
 	//First box function
 	//If you'd like to disable guaranteed setup weapons, you'll want to comment out this entire if statement.
-	if ( level.chest_moves == 0 )
-	{
-		ran = randomInt( (level.chest_max_move_usage - level.weapons_needed) - level.chest_accessed );
-		if ( ran == 0 && level.chest_accessed <= level.chest_max_move_usage && level.weapons_needed > 0)
-		{	
-			pap_triggers = getentarray( "specialty_weapupgrade", "script_noteworthy" );
-
-			if ( treasure_chest_canplayerreceiveweapon( player, "raygun_mark2_zm", pap_triggers ) )
-			{
-				rand = "raygun_mark2_zm";
-			}
-			else if( treasure_chest_canplayerreceiveweapon( player, "ray_gun_zm", pap_triggers ) )
-			{
-				rand = "ray_gun_zm";
-			}
-			else if( treasure_chest_canplayerreceiveweapon( player, "cymbal_monkey_zm", pap_triggers ) && getDvar("mapname") != "zm_prison")
-			{
-				rand = "cymbal_monkey_zm";
-			}
-			else if( treasure_chest_canplayerreceiveweapon( player, "blundergat_zm", pap_triggers ) && getDvar("mapname") == "zm_prison")
-			{
-				rand = "blundergat_zm";
-			}
-			else if( treasure_chest_canplayerreceiveweapon( player, "slowgun_zm", pap_triggers ) && getDvar( "mapname" ) == "zm_buried")
-			{
-				rand = "slowgun_zm";
-			}
-			else if( treasure_chest_canplayerreceiveweapon( player, "emp_grenade_zm", pap_triggers ) && getDvar("mapname") == "zm_transit" && is_classic() )
-			{
-				rand = "emp_grenade_zm";
-			}
-			else if( treasure_chest_canplayerreceiveweapon( player, "m32_zm", pap_triggers ) && getDvar("mapname") == "zm_tomb")
-			{
-				rand = "m32_zm";
-			}
-
-			if( level.weapons_needed != 0 )
-			{
-				level.weapons_needed--;
-			}
-			// iprintln("ran modified: " + rand);
-		}
-	}
+//	if ( level.chest_moves == 0 )
+//	{
+//		ran = randomInt( (level.chest_max_move_usage - level.weapons_needed) - level.chest_accessed );
+//		if ( ran == 0 && level.chest_accessed <= level.chest_max_move_usage && level.weapons_needed > 0)
+//		{	
+//			pap_triggers = getentarray( "specialty_weapupgrade", "script_noteworthy" );
+//
+//			if ( treasure_chest_canplayerreceiveweapon( player, "raygun_mark2_zm", pap_triggers ) )
+//			{
+//				rand = "raygun_mark2_zm";
+//			}
+//			else if( treasure_chest_canplayerreceiveweapon( player, "ray_gun_zm", pap_triggers ) )
+//			{
+//				rand = "ray_gun_zm";
+//			}
+//			else if( treasure_chest_canplayerreceiveweapon( player, "cymbal_monkey_zm", pap_triggers ) && getDvar("mapname") != "zm_prison")
+//			{
+//				rand = "cymbal_monkey_zm";
+//			}
+//			else if( treasure_chest_canplayerreceiveweapon( player, "blundergat_zm", pap_triggers ) && getDvar("mapname") == "zm_prison")
+//			{
+//				rand = "blundergat_zm";
+//			}
+//			else if( treasure_chest_canplayerreceiveweapon( player, "slowgun_zm", pap_triggers ) && getDvar( "mapname" ) == "zm_buried")
+//			{
+//				rand = "slowgun_zm";
+//			}
+//			else if( treasure_chest_canplayerreceiveweapon( player, "emp_grenade_zm", pap_triggers ) && getDvar("mapname") == "zm_transit" && is_classic() )
+//			{
+//				rand = "emp_grenade_zm";
+//			}
+//			else if( treasure_chest_canplayerreceiveweapon( player, "m32_zm", pap_triggers ) && getDvar("mapname") == "zm_tomb")
+//			{
+//				rand = "m32_zm";
+//			}
+//
+//			if( level.weapons_needed != 0 )
+//			{
+//				level.weapons_needed--;
+//			}
+//			// iprintln("ran modified: " + rand);
+//		}
+//	}
 
 	// iprintln("weapons needed: " + level.weapons_needed);
 	// iprintln("ran: " + ran);
