@@ -194,7 +194,7 @@ connected()
 If the box hasn't moved, raygun mk2 has an equal drop chance on any map. On Buried, it is always equal. 
 Otherwise, a randomint is generated from 0-100. Anything below 50 passes and you get the gun. Anything above 49 fails and the gun is rerolled.
 If you'd like to comment out some aspects of the function, or change the default probability, the function is found in "remix/_magicbox.gsc".*/
-//			raygun_mark2_probabilty();
+			raygun_mark2_probabilty();
 
 //			disable_fire_sales();
 			disable_high_round_walkers();
