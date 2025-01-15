@@ -131,7 +131,7 @@ connected()
 			self thread night_mode();
 			self thread rotate_skydome();
 
-	    	self thread timer_hud();
+	    		self thread timer_hud();
 			self thread trap_timer_hud();
 			self thread health_bar_hud();
 			self thread zombie_remaining_hud();
