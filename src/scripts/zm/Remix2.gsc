@@ -53,6 +53,7 @@ main()
 
 //Causes zombies to run on round 1.
 	replaceFunc( maps/mp/zombies/_zm_utility::set_run_speed, ::set_run_speed_override );
+
 //Gives players 3 weapon slots by default.
 	replaceFunc( maps/mp/zombies/_zm_utility::get_player_weapon_limit, ::get_player_weapon_limit_override );
 
