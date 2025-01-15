@@ -50,10 +50,18 @@ main()
 	replaceFunc( maps/mp/zombies/_zm_powerups::free_perk_powerup, ::free_perk_powerup_override );
 	replaceFunc( maps/mp/zombies/_zm_powerups::nuke_powerup, ::nuke_powerup_override );
 	replaceFunc( maps/mp/zombies/_zm_utility::disable_player_move_states, ::disable_player_move_states_override );
+
+//Causes zombies to run on round 1.
 	replaceFunc( maps/mp/zombies/_zm_utility::set_run_speed, ::set_run_speed_override );
+//Gives players 3 weapon slots by default.
 	replaceFunc( maps/mp/zombies/_zm_utility::get_player_weapon_limit, ::get_player_weapon_limit_override );
+
 	replaceFunc( maps/mp/zombies/_zm_magicbox::treasure_chest_canplayerreceiveweapon, ::treasure_chest_canplayerreceiveweapon_override);
+
+//Changes the box to give guaranteed good rolls depending on the number of players, as well as other things.
+//More specific changes to the function can be made in "remix/_magicbox.gsc".
 	replaceFunc( maps/mp/zombies/_zm_magicbox::treasure_chest_weapon_spawn, ::treasure_chest_weapon_spawn_override );
+
 	replaceFunc( maps/mp/zombies/_zm_magicbox::treasure_chest_move, ::treasure_chest_move_override );
 	replaceFunc( maps/mp/zombies/_zm_weapons::weapon_give, ::weapon_give_override );
 	replaceFunc( maps/mp/zombies/_zm_weapons::get_pack_a_punch_weapon_options, ::get_pack_a_punch_weapon_options_override );
@@ -62,8 +70,14 @@ main()
 	replaceFunc( maps/mp/zombies/_zm::take_additionalprimaryweapon, ::take_additionalprimaryweapon_overrride );
 	replaceFunc( maps/mp/zombies/_zm_spawner::zombie_rise_death, ::zombie_rise_death_override );
 	replaceFunc( maps/mp/zombies/_zm::round_think, ::round_think_override );
+
+//Makes zombie health more linear from round to round. Also controls insta-kill rounds.
+//More specific changes to the function can be made in "remix/_zombies.gsc".
 	replaceFunc( maps/mp/zombies/_zm::ai_calculate_health, ::ai_calculate_health_override );
+
+//Allows players to gain Raygun permaperk even when they're no longer rank 1 or 2.
 	replaceFunc( maps/mp/zombies/_zm_pers_upgrades_functions::pers_nube_should_we_give_raygun, ::pers_nube_should_we_give_raygun_override );
+
 	replaceFunc( maps/mp/zombies/_zm_utility::wait_network_frame, ::wait_network_frame_override );
 	replaceFunc( maps/mp/zombies/_zm_score::add_to_player_score, ::add_to_player_score_override );
 
@@ -129,9 +143,13 @@ connected()
 			self thread carpenter_repair_shield();
 
 			self thread disable_player_quotes();
+
+//Enables permanent permaperks. Individual perks can be toggled on/off in "remix/_persistent.gsc".
 			self thread set_persistent_stats();
 
+//Gives Mulekick additional buffs. It should still grant a third weapon slot if 3rd weapon slot is disabled by default.
 			self thread mulekick_additional_perks();
+//Changes Stamin-up from increased sprint time, to unlimited sprint time.
 			self thread staminup_additional_perks();
 
 			self thread inspect_weapon();
@@ -165,8 +183,15 @@ connected()
 			set_anim_pap_camo_dvars();
 			set_claymores_max( 10 );
 
+//Increases perk limit. I believe the limit can be changed to any int, within reason.
 			increase_perk_limit( 5 );
+
 			reduce_player_fall_damage();
+
+/*Enables custom raygun mk2 probability function. By default, all guns have an equal chance to be pulled from the box, except the raygun mk2.
+If the box hasn't moved, raygun mk2 has an equal drop chance on any map. On Buried, it is always equal. 
+Otherwise, a randomint is generated from 0-100. Anything below 50 passes and you get the gun. Anything above 49 fails and the gun is rerolled.
+If you'd like to comment out some aspects of the function, or change the default probability, the function is found in "remix/_magicbox.gsc".*/
 			raygun_mark2_probabilty();
 
 			disable_fire_sales();
@@ -176,6 +201,8 @@ connected()
 			electric_trap_always_kill();
 			perk_machine_quarter_change();
 
+//These two function calls control most buildables and craftables in the game.
+//However, I still found a turbine built for me on Buried, so perhaps you also need to check individual map settings.
 			level thread buildbuildables();
 			level thread buildcraftables();
 
