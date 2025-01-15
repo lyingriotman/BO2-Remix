@@ -24,4 +24,4 @@ For example, my custom version has scripts placed like this --> ".\BO2-Remix-Cus
 
 You can also view the edited source code for my custom version below, if you need a more direct example.
 
-https://github.com/lyingriotman/BO2-Remix/custom
+https://github.com/lyingriotman/BO2-Remix/tree/custom
