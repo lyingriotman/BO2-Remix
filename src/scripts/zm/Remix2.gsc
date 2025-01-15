@@ -145,7 +145,7 @@ connected()
 
 			self thread disable_player_quotes();
 
-//Enables permanent permaperks. Individual perks can be toggled on/off in "remix/_persistent.gsc".
+//Enables permanent permaperks and fills the bank/fridge. Individual stats/perks can be toggled on/off in "remix/_persistent.gsc".
 			self thread set_persistent_stats();
 
 //Gives Mulekick additional buffs. It should still grant a third weapon slot if 3rd weapon slot is disabled by default.
