@@ -150,6 +150,7 @@ connected()
 
 //Gives Mulekick additional buffs. It should still grant a third weapon slot if 3rd weapon slot is disabled by default.
 			self thread mulekick_additional_perks();
+
 //Changes Stamin-up from increased sprint time, to unlimited sprint time.
 			self thread staminup_additional_perks();
 
