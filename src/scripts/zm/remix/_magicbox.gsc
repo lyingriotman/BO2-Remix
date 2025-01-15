@@ -48,16 +48,18 @@ set_startings_chests()
 	}
 }
 
+//Function call from initialization script Remix2.gsc. Despite the name, it alters the logic for every special weapon in the game.
 raygun_mark2_probabilty()
 {
     level.special_weapon_magicbox_check = ::custom_special_weapon_magicbox_check;
 }
 
-custom_special_weapon_magicbox_check( weapon ) {
-
-    map = getDvar("mapname");
+//Special weapon box logic
+custom_special_weapon_magicbox_check( weapon )
+{
+	map = getDvar("mapname");
     
-    if ( weapon == "ray_gun_zm" )
+	if ( weapon == "ray_gun_zm" )
 	{
 		if ( self has_weapon_or_upgrade( "raygun_mark2_zm" ) )
 		{
@@ -71,39 +73,43 @@ custom_special_weapon_magicbox_check( weapon ) {
 			return 0;
 		}
 
-		// Always give Mark2 until the box moves for first time
+		//Always has an equal probability for Mark2 until the box moves for first time
 		if ( level.chest_moves == 0 )
 		{
 			return 1;
 		}
 
-        // Buried has Mark 2 weighted equally to all others
-        if( map == "zm_buried") {
-            return 1;
-        }
+        	//Buried always has equal Mark2 probability
+        	if( map == "zm_buried") 
+		{
+            		return 1;
+        	}
         
-        // (# of weapons in box) * .5 = (odds of getting Mark 2 from box)
-        // Not as even as every other weapon, but more probable than it already was
-        if (randomint (100) >= 50) {
-            return 0;
-        }
+        	// (1/(# of weapons in box))*.5 = (odds of getting Mark 2 from box)
+        	//Less likely than every other weapon, but more probable than it was by default
+        	if (randomint (100) >= 50) {
+            		return 0;
+        	}
 	}
 
+	if(map == "zm_prison") 
+	{
+        	return alcatraz_special_weapon_check(weapon);
+	}
+	else if( map == "zm_buried") 
+	{
+        	return buried_special_weapon_check(weapon);
+    	}
+    	else if(map == "zm_tomb")
+	{
+        	return tomb_special_weapon_check(weapon);
+    	}
 
-    if(map == "zm_prison") {
-        return alcatraz_special_weapon_check(weapon);
-    }
-    else if( map == "zm_buried") {
-        return buried_special_weapon_check(weapon);
-    }
-    else if(map == "zm_tomb") {
-        return tomb_special_weapon_check(weapon);
-    }
-
-    return 1;
+   	return 1;
 }
 
-buried_special_weapon_check(weapon) {
+buried_special_weapon_check(weapon) 
+{
     if ( weapon == "time_bomb_zm" )
     {
         players = get_players();
@@ -120,61 +126,67 @@ buried_special_weapon_check(weapon) {
     return 1;
 }
 
-alcatraz_special_weapon_check(weapon) {
+alcatraz_special_weapon_check(weapon) 
+{
 
 	return 1;
-    // if ( weapon != "blundergat_zm" && weapon != "minigun_alcatraz_zm" )
-    // {
-    //     return 1;
-    // }
-    // players = get_players();
-    // count = 0;
-    // if ( weapon == "blundergat_zm" )
-    // {
-    //     if ( self maps/mp/zombies/_zm_weapons::has_weapon_or_upgrade( "blundersplat_zm" ) )
-    //     {
-    //         return 0;
-    //     }
-    //     if ( self afterlife_weapon_limit_check( "blundergat_zm" ) )
-    //     {
-    //         return 0;
-    //     }
-    //     limit = level.limited_weapons[ "blundergat_zm" ];
-    // }
-    // else
-    // {
-    //     if ( self afterlife_weapon_limit_check( "minigun_alcatraz_zm" ) )
-    //     {
-    //         return 0;
-    //     }
-    //     limit = level.limited_weapons[ "minigun_alcatraz_zm" ];
-    // }
-    // i = 0;
-    // while ( i < players.size )
-    // {
-    //     if ( weapon == "blundergat_zm" )
-    //     {
-    //         if ( players[ i ] has_weapon_or_upgrade( "blundersplat_zm" ) || isDefined( players[ i ].is_pack_splatting ) && players[ i ].is_pack_splatting )
-    //         {
-    //             count++;
-    //             i++;
-    //             continue;
-    //         }
-    //     }
-    //     else
-    //     {
-    //         if ( players[ i ] afterlife_weapon_limit_check( weapon ) )
-    //         {
-    //             count++;
-    //         }
-    //     }
-    //     i++;
-    // }
-    // if ( count >= limit )
-    // {
-    //     return 0;
-    // }
-    // return 1;
+
+//	if ( weapon != "blundergat_zm" && weapon != "minigun_alcatraz_zm" )
+//	{
+//		return 1;
+//	}
+//
+//	players = get_players();
+//	count = 0;
+//	if ( weapon == "blundergat_zm" )
+//	{
+//		if ( self maps/mp/zombies/_zm_weapons::has_weapon_or_upgrade( "blundersplat_zm" ) )
+//		{
+//			return 0;
+//		}
+//		if ( self afterlife_weapon_limit_check( "blundergat_zm" ) )
+//		{
+//			return 0;
+//		}
+//
+//		limit = level.limited_weapons[ "blundergat_zm" ];
+//	}
+//	else
+//	{
+//		if ( self afterlife_weapon_limit_check( "minigun_alcatraz_zm" ) )
+//		{
+//			return 0;
+//		}
+//		limit = level.limited_weapons[ "minigun_alcatraz_zm" ];
+//	}
+//	
+//	i = 0;
+//	while ( i < players.size )
+//	{
+//		if ( weapon == "blundergat_zm" )
+//		{
+//			if ( players[ i ] has_weapon_or_upgrade( "blundersplat_zm" ) || isDefined( players[ i ].is_pack_splatting ) && players[ i ].is_pack_splatting )
+//			{
+//				count++;
+//				i++;
+//				continue;
+//			}
+//		}
+//		else
+//		{
+//			if ( players[ i ] afterlife_weapon_limit_check( weapon ) )
+//			{
+//				count++;
+//			}
+//		}
+//		i++;
+//	}
+//	if ( count >= limit )
+//	{
+//		return 0;
+//	}
+//
+//	return 1;
 }
 
 tomb_special_weapon_check(weapon) {
