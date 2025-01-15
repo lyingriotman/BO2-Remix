@@ -243,6 +243,7 @@ treasure_chest_canplayerreceiveweapon_override( player, weapon, pap_triggers ) /
 	return 1;
 }
 
+//Used to see if you have a wonderweapon before moving the box. To disable this check, comment out the entire if statement, or change the "return 1" to "return 0".
 is_setup_weapon( weapon )
 {
 	if( weapon == "raygun_mark2_zm" || weapon == "ray_gun_zm" || weapon == "cymbal_monkey_zm" || weapon == "blundergat_zm" || weapon == "slowgun_zm" || weapon == "m32_zm" )
@@ -302,7 +303,7 @@ treasure_chest_weapon_spawn_override( chest, player, respin ) //checked changed 
 		}
 	}
 
-	// first box level vars
+	//First box variables
 	if ( !isDefined(level.chest_max_move_usage) )
 	{
 		level.chest_max_move_usage = 8;
@@ -334,7 +335,8 @@ treasure_chest_weapon_spawn_override( chest, player, respin ) //checked changed 
 
 	// iPrintLn("weapon: " + rand);
 
-	// first box
+	//First box function
+	//If you'd like to disable guaranteed setup weapons, you'll want to comment out this entire if statement.
 	if ( level.chest_moves == 0 )
 	{
 		ran = randomInt( (level.chest_max_move_usage - level.weapons_needed) - level.chest_accessed );
