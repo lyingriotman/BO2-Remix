@@ -1,0 +1,23 @@
+To edit settings from the default configuration of BO2-Remix:
+
+1. Navigate to the root of BO2-Remix-main and go into the ".\src\scripts\zm" folder
+2. Remix2.gsc is the main file used to control settings. You can toggle most general settings on/off from there.
+3. If you'd like to tweak how those settings work, such as only enabling certain permaperks, or changing how zombie health scales, you'll need to navigate to the remix folder and adjust the appropriate .gsc files.a
+4. To change map specific settings, you'll need to navigate to the map folders and edit the Remix2_<mapname>.gsc inside.
+
+I recommend only tweaking settings by commenting out lines with "//<line>", or "/* <lines> */" for multiple lines. This way, it's easy to revert changes without downloading the source again. 
+
+In the case of permaperks, you have to alter an array by adding/removing variable names. I recommend deleting the names from the array initialization, but only comment out the lines that assign each variable a value.
+
+
+
+To compile a new version:
+
+1. Open powershell in this folder (".\tools"). You can hold shift and right click in the folder to get a context option for Windows Powershell.
+2. Type ".\compile.bat multifile remix.gsc"
+3. Press ENTER
+
+Some additional powershell windows should pop up while it runs. It will also print "File Not Found; - Compiled GSC; - ZIPd GSC", this is normal.
+All you need to do now is copy the new scripts folder in .\tools and put it inside another folder with the name of your custom BO2 Remix.
+
+For example, my custom version has scripts placed like this --> ".\BO2-Remix-Custom\scripts". Then I just put that whole folder structure in the Plutonium mod folder for BO2 at "C:\Users\<username>\AppData\Local\Plutonium\storage\t6\mods".
