@@ -11,7 +11,7 @@ set_persistent_stats()
 	
 	flag_wait("initial_blackscreen_passed");
 
-//You can disable any persistent stats more directly from here, if you'd like to have perma_perks, but not bank points, etc.
+	//You can disable any persistent stats more directly from here, if you'd like to have perma_perks, but not bank points, etc.
 	set_perma_perks();
 	set_bank_points();
 	set_fridge_weapon();
