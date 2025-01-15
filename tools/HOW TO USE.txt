@@ -2,12 +2,12 @@ To edit settings from the default configuration of BO2-Remix:
 
 1. Navigate to the root of BO2-Remix-main and go into the ".\src\scripts\zm" folder
 2. Remix2.gsc is the main file used to control settings. You can toggle most general settings on/off from there.
-3. If you'd like to tweak how those settings work, such as only enabling certain permaperks, or changing how zombie health scales, you'll need to navigate to the remix folder and adjust the appropriate .gsc files.a
+3. If you'd like to tweak how those settings work, such as only enabling certain permaperks, or changing how zombie health scales, you'll need to navigate to the remix folder and adjust the appropriate .gsc files.
 4. To change map specific settings, you'll need to navigate to the map folders and edit the Remix2_<mapname>.gsc inside.
 
 I recommend only tweaking settings by commenting out lines with "//<line>", or "/* <lines> */" for multiple lines. This way, it's easy to revert changes without downloading the source again. 
 
-In the case of permaperks, you have to alter an array by adding/removing variable names. I recommend deleting the names from the array initialization, but only comment out the lines that assign each variable a value.
+In the case of permaperks, you have to alter an array by adding/removing variable names. I recommend commenting out the names from the array, as well as the value assignment, so there aren't any outstanding errors.
 
 
 
