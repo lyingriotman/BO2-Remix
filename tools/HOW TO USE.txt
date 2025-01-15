@@ -21,3 +21,7 @@ Some additional powershell windows should pop up while it runs. It will also pri
 All you need to do now is copy the new scripts folder in .\tools and put it inside another folder with the name of your custom BO2 Remix.
 
 For example, my custom version has scripts placed like this --> ".\BO2-Remix-Custom\scripts". Then I just put that whole folder structure in the Plutonium mod folder for BO2 at "C:\Users\<username>\AppData\Local\Plutonium\storage\t6\mods".
+
+You can also view the edited source code for my custom version below, if you need a more direct example.
+
+https://github.com/lyingriotman/BO2-Remix/custom
